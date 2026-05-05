@@ -1,0 +1,26 @@
+class Solution {
+    public long sumXOR(int[] arr) {
+        // code here
+        int n = arr.length;
+    long total=0;
+    
+    for(int bit =0;bit<32;bit++){
+        long count0=0;
+        long count1=0;
+    
+        for(int i=0;i<n;i++){
+            if((arr[i]&(1<<bit))!=0){
+                count1++;
+            }else{
+                count0++;
+            }
+        }
+        long pairs=count1*count0;
+        total+=pairs*(1L<<bit);
+    }
+    
+    
+    return total;
+        
+    }
+}
