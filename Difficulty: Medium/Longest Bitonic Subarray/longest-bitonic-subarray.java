@@ -1,21 +1,39 @@
 class Solution {
     public int bitonic(int[] arr) {
-        int n=arr.length;
-        int max=0;
-        for(int i=0;i<n;i++){
-            int c1=1;
-            int j=i;
-            while(j+1<n && arr[j]<=arr[j+1]){
-                j++;
-                c1++;
-            }
-            int c2=1;
-            while(j+1<n && arr[j]>=arr[j+1]){
-                j++;
-                c2++;
-            }
-            max=Math.max(max,c1+c2-1);
+        // code here
+        int n = arr.length;
+        if(n==1){
+            return 1;
         }
-        return max;
-    }
+        int ans =1;
+        int i=0;
+        int j=1;
+        
+        boolean inc = (arr[j]>=arr[i]);
+        int same =-1;
+        while(j<n){
+            if(inc){
+                if(arr[j-1]>arr[j]){
+                    inc=false;
+                }
+                    
+                }else{
+                    if(same ==-1 && arr[j-1]==arr[j]){
+                        same=j-1;
+                    }
+                    else if(same!=-1 && arr[j-1]>arr[j]){
+                        same=-1;
+                    }else if(arr[j-1]<arr[j]){
+                        ans=Math.max(ans , j-i);
+                        i=(same!=-1)?same :j-1;
+                        same=-1;
+                        inc = true;
+                    }
+                }
+                j++;
+            }
+            ans=Math.max(ans, j-i);
+            return ans;
+        }
+    
 }
