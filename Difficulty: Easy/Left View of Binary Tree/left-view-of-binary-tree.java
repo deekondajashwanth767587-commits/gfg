@@ -15,15 +15,19 @@ class Solution {
     public ArrayList<Integer> leftView(Node root) {
         // code here
         ArrayList<Integer> result = new ArrayList<>();
-       left(root, 0, result);
+         if(root == null )return result;
+        left(root ,0,result );
+        
+        
         return result;
+        
     }
-    public void left(Node root  , int level , ArrayList<Integer> result){
-        if(root == null )return ;
-        if(level == result.size()){
-            result.add(root.data);
+    public void left(Node node ,  int level , ArrayList<Integer> result){
+            if(node == null )return ;
+            if(level==result.size()){
+            result.add(node.data);
         }
-        left(root.left, level+1 ,result );
-        left(root.right, level+1, result);
+        left(node.left, level+1 , result);
+        left(node.right , level+1 , result);
     }
 }
