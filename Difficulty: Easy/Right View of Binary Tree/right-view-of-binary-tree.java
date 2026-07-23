@@ -15,18 +15,44 @@ class Node {
 class Solution {
     public ArrayList<Integer> rightView(Node root) {
         // code here
-        ArrayList<Integer> result = new ArrayList<>();
-        right(root, 0, result);
-        return result;
-    }
-    public void right(Node root , int level , ArrayList<Integer> result){
-        if(root== null)return ;
-        if(level==result.size()){
-            result.add(root.data);
-            
-        }
-        right(root.right , level+1, result);
-        right(root.left , level+1 , result);
-        
+        /*
+class Node {
+    int data;
+    Node left, right;
+
+    Node(int val) {
+        this.data = val;
+        this.left = null;
+        this.right = null;
     }
 }
+*/
+
+ 
+        // code here
+        ArrayList<Integer> res = new ArrayList<>();
+        if(root == null)return res;
+        Queue<Node> q = new LinkedList<>();
+        q.add(root);
+        while(!q.isEmpty()){
+            int s = q.size();
+            for(int i=0;i<s ;i++){
+                Node curr = q.poll();
+                if(i==s-1){
+                    res.add(curr.data);
+                }
+                if(curr.left!=null){
+                    q.add(curr.left);
+                    
+                }
+                if(curr.right!=null){
+                    q.add(curr.right);
+                }
+                
+            }
+            
+        }
+        return res;
+    }
+}
+    
