@@ -1,6 +1,7 @@
 class Solution {
     public List<Integer> exitPoint(int[][] mat) {
         // code here
+        //  in pat note book 
         int row =0;
         int col=0;
         int direction =0;
@@ -11,25 +12,16 @@ class Solution {
                 direction=(direction+1)%4;
                 mat[row][col]=0;
             }
-            if(direction==0){
-                col++;
-            }else if(direction ==1){
-                row++;
-            }else if(direction==2){
-                col--;
-            }else{
-                row--;
-            }  
+             if(direction==0)col++;
+             else if(direction==1)row++;
+             else if(direction==2)col--;
+             else row--;
         }
-        if(direction==0){
-                col--;
-            }else if(direction ==1){
-                row--;
-            }else if(direction==2){
-                col++;
-            }else{
-                row++;
-            }
+         if(direction==0)col--;
+             else if(direction==1)row--;
+             else if(direction==2)col++;
+             else row++;
+         
             List<Integer>ans = new ArrayList<>();
             ans.add(row);
             ans.add(col);
